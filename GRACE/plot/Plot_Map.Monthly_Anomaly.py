@@ -128,7 +128,7 @@ if (__name__ == '__main__'):
 			'Plot_pcolormesh_vmin': -0.1, \
 			'Plot_pcolormesh_vmax': 0.1, \
 			'Plot_cmap'           : 'BrBG', \
-			'Var'                 : 'Liquid water equivalent thickness', \
+			'Var'                 : 'Liquid_water_equivalent_thickness', \
 			'Month'               : ind_Month + 1, \
 		}
 
