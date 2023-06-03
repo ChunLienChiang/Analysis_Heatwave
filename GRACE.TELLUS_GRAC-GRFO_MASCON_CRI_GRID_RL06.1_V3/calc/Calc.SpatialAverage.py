@@ -15,11 +15,14 @@ import preprocessing.Preprocessing as Prep
 
 if (__name__ == '__main__'):
 
+	# Set the region to calculate spatial average
+	Region = 'Taiwan_Analysis'
+
 	# Get data
 	Data, Time, Lat, Lon = PrepGD.Get_Data()
 	
 	# Calculate spatial average
-	Data = Prep.Calc_SpatialAverage(Data, Lat, Lon, 'SouthChina_Analysis').squeeze()
+	Data = Prep.Calc_SpatialAverage(Data, Lat, Lon, Region).squeeze()
 	
 	# Convert Time to YYYY-MM-DD format and convert to pandas datetime
 	Time = np.array([pd.to_datetime(str(i_Time)[0:10]) for i_Time in Time])
@@ -27,7 +30,7 @@ if (__name__ == '__main__'):
 	# ==================================================
 	# Write spatial average to nc file by xarray
 	Output_Path = '../output/Output_Data/SptAvg/'
-	Output_File = 'SptAvg.lwe_thickness.nc'
+	Output_File = 'SptAvg.lwe_thickness.{}.nc'.format(Region)
 	if not os.path.exists(Output_Path): os.makedirs(Output_Path)
 
 	# Create xarray dataset
